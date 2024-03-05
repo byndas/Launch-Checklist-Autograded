@@ -4,7 +4,7 @@
 
 For this "Launch Checklist Form" assignment, you will use a form submission and fetch request to accomplish the following:
 
-1. Validate the user responses with `preventDefault()` to ensure the following: 
+1. Validate the user responses with `preventDefault()` to ensure the following:
 
    a. The user has entered something for every field.
 
@@ -20,11 +20,11 @@ The submitted web page will look similar to the [demo app](http://launch-checkli
 
 ### Grading Tests
 
-You can run the tests locally or check out Github Classroom to see if your work passes the autograding tests. Remember in Github Classroom, if you have passed all the tests, you get a green checkmark and if one or more of the tests fails, then you get a red "x". 
+You can run the tests locally or check out Github Classroom to see if your work passes the autograding tests. Remember in Github Classroom, if you have passed all the tests, you get a green checkmark and if one or more of the tests fails, then you get a red "x".
 
 A passing assignment will have an output of: `Tests: 10 passed`.
 
-If the output matches above, your submission meets the testing requirements! 
+If the output matches above, your submission meets the testing requirements!
 
 **Note**: When you first run your tests, one test will pass. This test is to ensure that the environment for the autograder is properly initialized. If you start out with 10 failed tests, please reach out to course staff for assistance.
 
@@ -50,7 +50,7 @@ After reviewing the test output, your TA will check your submission for the foll
    c. Does the cargo value message reflect if the submitted value is too high (more than 10,000) or in the correct range?
 
    d. Is the header message red and does it read 'Shuttle Not Ready for Launch' when either fuel or cargo are not in range?
-   
+
    e. Is the header message green and does it read 'Shuttle is Ready for Launch' when both fuel and cargo are submitted in range?
 
 1. You added JavaScript in `script.js` that is enclosed within a load event listener.
