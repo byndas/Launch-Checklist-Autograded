@@ -18,7 +18,7 @@ window.addEventListener("load", function () {
   //          indicate when launch ready
   //  ..................................
 
-
+  formSubmission(someArgs); // call somewhere here
 
   //  PART TWO: FETCH PLANETARY DATA
   //  ..............................
@@ -33,7 +33,7 @@ window.addEventListener("load", function () {
 
       //  use pickPlanet() & addDestinationInfo() helper functions
       //    to select random planet from listedPlanets
-      //      pass that planet info to addDestinationInfo()
+      //      & pass that planet info to addDestinationInfo()
       //        reload page to see mission target info
     });
 });
