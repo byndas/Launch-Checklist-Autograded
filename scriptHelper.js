@@ -1,38 +1,17 @@
 require("cross-fetch/polyfill");
 
-// Write your helper functions here!
-
-function addDestinationInfo(
-  document,
-  name,
-  diameter,
-  star,
-  distance,
-  moons,
-  imageUrl
-) {
-  /*    mission target div HTML formatting:
-
-                 <h2>Mission Destination</h2>
-                 <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
-                 </ol>
-                 <img src="">   */
-}
-
+//  ............................
 
 //  PART ONE: VALIDATE INPUTS
+
 //    create launch checklist,
 //      validating shuttle info,
 //        preventing unready launch
 
-// pilot & co-pilot names are strings
-// fuel level & cargo mass are numbers
 function validateInput(testInput) {
+  // pilot & co-pilot names are strings
+  // fuel level & cargo mass are numbers
+
   // string parameter --> returns "Empty", "Not a Number", "Is a Number"
 
 
@@ -42,8 +21,8 @@ function validateInput(testInput) {
 // document parameter & strings for pilot, co-pilot, fuelLevel, cargo mass
 function formSubmission(
   // PARAMETERS:
-  document, // dom?
-  list, // array?
+  document, // dom
+  list, // array
   pilot, // string
   copilot, // string
   fuelLevel, // string?
@@ -55,12 +34,38 @@ function formSubmission(
 
 }
 
+// ...................................
+
+// PART TWO: FETCH PLANETARY JSON DATA
+
 async function myFetch() {
   let planetsReturned;
 
   planetsReturned = await fetch().then(function (response) {});
 
   return planetsReturned;
+}
+
+function addDestinationInfo(
+  document,
+  name,
+  diameter,
+  star,
+  distance,
+  moons,
+  imageUrl
+) {
+  /*  add within #missionTarget:
+
+        <h2>Mission Destination</h2>
+        <ol>
+            <li>Name: </li>
+            <li>Diameter: </li>
+            <li>Star: ${star}</li>
+            <li>Distance from Earth: </li>
+            <li>Number of Moons: </li>
+        </ol>
+        <img src="">  */
 }
 
 function pickPlanet(planets) {}
@@ -72,8 +77,8 @@ module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
 
-/*.......................
-
+/* 
+.........................
 PART ONE: VALIDATE INPUTS
 
   Astronaut Launch Checklist Form:
@@ -97,7 +102,7 @@ PART ONE: VALIDATE INPUTS
             B.  has correct data type
 
                   inputElementList.forEach(input => {
-                    
+
                     if (pilotNameInput.value.type === "text") {
                       if (copilotNameInput.value.type === "text") {
 

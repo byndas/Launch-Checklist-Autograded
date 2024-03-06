@@ -8,7 +8,7 @@ const {
 
 window.addEventListener("load", function () {
   let listedPlanets;
-  let listedPlanetsResponse = myFetch(); // returns a promise that returns a value --> data object
+  let listedPlanetsResponse = myFetch(); // returns a promise that returns a data-object
 
   //  PART ONE: VALIDATE INPUTS
   //  .........................
