@@ -24,6 +24,12 @@ function addDestinationInfo(
                  <img src="">   */
 }
 
+
+//  PART ONE: VALIDATE INPUTS
+//    create launch checklist,
+//      validating shuttle info,
+//        preventing unready launch
+
 // pilot & co-pilot names are strings
 // fuel level & cargo mass are numbers
 function validateInput(testInput) {
@@ -35,15 +41,16 @@ function validateInput(testInput) {
 // use validateInput() to complete formSubmission()
 // document parameter & strings for pilot, co-pilot, fuelLevel, cargo mass
 function formSubmission(
-  document,
-  list,
-  pilot,
-  copilot,
-  fuelLevel,
-  cargoLevel
+  // PARAMETERS:
+  document, // dom?
+  list, // array?
+  pilot, // string
+  copilot, // string
+  fuelLevel, // string?
+  cargoLevel // string?
 ) {
-  // NOTE: to check for NaN, use isNaN(value) method that returns true if value is NaN
-  // use values in strings & document parameter for HTML document to update shuttle requirements
+  // NOTE: isNaN(value) method returns true if value is NaN
+  // use values in strings & use document parameter for HTML document to update launch checklist
   // call formSubmission() in script.js
 
 }
@@ -58,31 +65,84 @@ async function myFetch() {
 
 function pickPlanet(planets) {}
 
+
 module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
 
+/*.....................
+
+PART 1: VALIDATE INPUTS
+
+  Astronaut Launch Prep Checklist Form:
+
+      1.  use preventDefault() to prevent sending a request that reloads page
+            if (error) { event.preventDefault(); alert("message"); }
+            try-catch?  predicts & bridges errors allowing code flow to continue
+            logical, digital, system architecture
+      2.  ensure user-submitted data:
+            A.  enters input for each field
+                --> if (input.value.length === 0) {};
+            B.  enters text for names but numbers for fuel & cargo levels
+            --> inputElementList.forEach(input => {
+                  if (pilotNameInput.value.type === "text") {
+                    if (copilotNameInput.value.type === "text") {}
+                  }
+                  if () {}
+                })
+      3.  use validation to update a list of launch-ready shuttle info
+      4.  indicate shuttle state & if shuttle is launch-ready via DOM updating CSS
+      5.  fetch planetary JSON to update mission destination info
+
+2A  alert user if any field lacks input value --> "Must enter a value for each field."
+.......................................................................................
+
+PART 2: FETCH PLANETARY DATA
+
+fetch JSON to inform crew of mission destination
+planetary data is in JSON format
+review planetary list, choose a destination & note its index number
+    fetching multiple JSON objects returns an array of all JSON object planets
+    choose a destination planet from the array via its index number
+
+scriptHelper.js has three functions to fetch planet list data:
+
+    1.  complete myFetch() to fetch planetary JSON
+            add the URL
+            return response.json()
+
+    2.  addDestinationInfo() comments show innerHTML format for <div id="missionTarget">,
+            save that element using addDestinationInfo()'s document parameter
+            addDestinationInfo() needs no return value
+
+    3.  pickPlanet() takes a planetList argument
+            use Math.random() to return random index planet from planetList argument
+....................................................................................
+*/
 
 /*
-update shuttle requirements list, <div id="faultyItems">, if something unready for launch:
+update shuttle launch checklist
+  if shuttle detail unready for launch:
+    <div id="faultyItems">
 
-use template literals to update <li> pilotStatus & copilotStatus to include pilot & co-pilot name
+update <li> pilotStatus & copilotStatus
+  to include pilot & co-pilot name
+    using template literals
 
-If user submits fuel level < 10,000 liters:
-  change faultyItems to visible
-  update fuel status to not enough fuel for mission
-  change h2 element text, launchStatus, to “Shuttle not ready for launch”
-  change text color to red
+If (user submits fuelLevel < 10,000 liters):
+  list of #faultyItems.display: visible;
+  fuelStatus = "not enough fuel for mission."; --> alert(""); ?
+  <h2>.innnerHTML = ${launchStatus} = “Shuttle not ready for launch”;
+  <h2>.color: red
 
-If user submits cargo mass > 10,000 kilograms:
-  change list to visible
-  update cargo status to too much mass for shuttle to take off
-  change launchStatus text to “Shuttle not ready for launch”
-  change text color to red
+If (user submits cargo mass > 10,000 kilograms):
+  list of #faultyItems.display: visible;
+  cargoStatus = "too much mass for shuttle to take off."; --> alert(""); ?
+  launchStatus = “Shuttle not ready for launch” --> color: red;
 
 If shuttle launch-ready:
-  change launchStatus text to “Shuttle is ready for launch” & text color to green
+  launchStatus = “Shuttle is ready for launch” --> color: green;
 
 */
