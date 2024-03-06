@@ -120,9 +120,9 @@ scriptHelper.js has three functions to fetch planet list data:
     3.  pickPlanet() takes a planetList argument
             use Math.random() to return random index planet from planetList argument
 ....................................................................................
-*/
 
-/*
+PART ONE:
+
 update shuttle launch checklist
   if shuttle detail unready for launch:
     <div id="faultyItems">
