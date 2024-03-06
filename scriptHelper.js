@@ -72,44 +72,85 @@ module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
 
-/*.....................
+/*.......................
 
-PART 1: VALIDATE INPUTS
+PART ONE: VALIDATE INPUTS
 
-  Astronaut Launch Prep Checklist Form:
+  Astronaut Launch Checklist Form:
 
-      1.  use preventDefault() to prevent sending a request that reloads page
+      1.  use preventDefault() to prevent sending request that reloads page
+
             if (error) { event.preventDefault(); alert("message"); }
-            try-catch?  predicts & bridges errors allowing code flow to continue
-            logical, digital, system architecture
-      2.  ensure user-submitted data:
-            A.  enters input for each field
-                --> if (input.value.length === 0) {};
-            B.  enters text for names but numbers for fuel & cargo levels
-            --> inputElementList.forEach(input => {
-                  if (pilotNameInput.value.type === "text") {
-                    if (copilotNameInput.value.type === "text") {}
-                  }
-                  if () {}
-                })
-      3.  use validation to update a list of launch-ready shuttle info
-      4.  indicate shuttle state & if shuttle is launch-ready via DOM updating CSS
-      5.  fetch planetary JSON to update mission destination info
 
-2A  alert user if any field lacks input value --> "Must enter a value for each field."
-.......................................................................................
+            try-catch? --> predicts & bridges errors to continue code flow
 
-PART 2: FETCH PLANETARY DATA
+      2.  ensure that each user-submitted input:
 
-fetch JSON to inform crew of mission destination
-planetary data is in JSON format
-review planetary list, choose a destination & note its index number
-    fetching multiple JSON objects returns an array of all JSON object planets
-    choose a destination planet from the array via its index number
+            A.  has a value
+
+                  inputElementList.forEach(input => {
+                    if (input.value.length === 0) {
+                      alert("Must enter a value for each field.");
+                    }
+                  });
+
+            B.  has correct data type
+
+                  inputElementList.forEach(input => {
+                    
+                    if (pilotNameInput.value.type === "text") {
+                      if (copilotNameInput.value.type === "text") {
+
+                      } else {}
+                    } else {}
+
+                    if (fuelLevel.type === "number") {
+                      if (cargoMass.type === "number") {
+
+                      } else {}
+                    } else {}
+                  })
+
+      3.  input validation updates launch checklist:
+
+            if (shuttle variable !== lanchReady) {
+              add shuttle variable to <div id="faultyItems">
+            }
+
+          update <li> pilotStatus & copilotStatus
+                  to include pilotName & copilotName
+                    using template literals
+
+          if (fuelLevel < 10,000 liters):
+            list of #faultyItems.display: visible; ?
+            fuelStatus = "not enough fuel for mission."; --> alert(""); ?
+            <h2>.innnerHTML = ${launchStatus} = “Shuttle not ready for launch”;
+            <h2>.color: red
+
+          if (cargoMass > 10,000 kilograms):
+            list of #faultyItems.display: visible; ?
+            cargoStatus = "too much mass for shuttle to take off."; --> alert(""); ?
+            launchStatus = “Shuttle not ready for launch” --> color: red;
+
+      4.  if (all shuttle variables === launchReady) {
+            indicate that shuttle is launch ready via DOM element.display: visible;
+            launchStatus = “Shuttle is ready for launch” --> color: green;
+          }
+...................................
+
+PART TWO: FETCH PLANETARY JSON DATA
+
+      5.  update mission destination planet info
+
+
+fetch planetary JSON data to inform crew of mission destination planet:
+  review planetary list, choose a random destination, note its index number
+    fetch multiple JSON objects to return an array of all JSON object planets
+      choose random destination planet via its array index number
 
 scriptHelper.js has three functions to fetch planet list data:
 
-    1.  complete myFetch() to fetch planetary JSON
+    1.  complete myFetch() to fetch planetary JSON data:
             add the URL
             return response.json()
 
@@ -119,30 +160,4 @@ scriptHelper.js has three functions to fetch planet list data:
 
     3.  pickPlanet() takes a planetList argument
             use Math.random() to return random index planet from planetList argument
-....................................................................................
-
-PART ONE:
-
-update shuttle launch checklist
-  if shuttle detail unready for launch:
-    <div id="faultyItems">
-
-update <li> pilotStatus & copilotStatus
-  to include pilot & co-pilot name
-    using template literals
-
-If (user submits fuelLevel < 10,000 liters):
-  list of #faultyItems.display: visible;
-  fuelStatus = "not enough fuel for mission."; --> alert(""); ?
-  <h2>.innnerHTML = ${launchStatus} = “Shuttle not ready for launch”;
-  <h2>.color: red
-
-If (user submits cargo mass > 10,000 kilograms):
-  list of #faultyItems.display: visible;
-  cargoStatus = "too much mass for shuttle to take off."; --> alert(""); ?
-  launchStatus = “Shuttle not ready for launch” --> color: red;
-
-If shuttle launch-ready:
-  launchStatus = “Shuttle is ready for launch” --> color: green;
-
-*/
+..................................................................................*/

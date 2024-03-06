@@ -11,12 +11,17 @@ window.addEventListener("load", function () {
   let listedPlanetsResponse = myFetch(); // returns a promise that returns a value --> data object
 
   //  PART ONE: VALIDATE INPUTS
-  //    create launch checklist,
-  //      validating shuttle info,
-  //        preventing unready launch
+  //  .........................
+  //    create launch checklist:
+  //      validate shuttle launch variables,
+  //        prevent unready launch
+  //          indicate when launch ready
+  //  ..................................
+
 
 
   //  PART TWO: FETCH PLANETARY DATA
+  //  ..............................
   listedPlanetsResponse
     .then(function (result) {
       listedPlanets = result;
