@@ -6,10 +6,10 @@ on form submit:
 
   PART ONE: VALIDATE INPUTS
     if any fail,
-      prevent page reload,
+      prevent page re-load,
       add that shuttle info with shuttle-launch-unready-message to #faultyItems display
       alert("errorMessage"),
-    otherwise, update #launchStatus to "Shuttle is launch ready"
+    otherwise, update #launchStatus to display "Shuttle is launch ready"
 
   PART TWO: FETCH PLANETARY JSON DATA --> planetList API
     select random planet from data response via its index number,
@@ -138,7 +138,6 @@ D.  if (cargoMass > 10000) {
 /*
 ..........................................................................................................................
 ..........................................................................................................................
-
 
 PART TWO: FETCH PLANETARY JSON DATA
 
