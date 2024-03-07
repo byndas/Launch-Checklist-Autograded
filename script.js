@@ -17,8 +17,9 @@ window.addEventListener("load", function () {
   //        prevent unready launch
   //          indicate when launch ready
   //  ..................................
+  const form = document.querySelector("form");
 
-  formSubmission(someArgs); // call somewhere here
+  form.addEventListener("submit", formSubmission(document, list, pilotName,copilotName, fuelLevel, cargoMass));
 
   //  PART TWO: FETCH PLANETARY DATA
   //  ..............................

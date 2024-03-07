@@ -10,40 +10,11 @@ require("cross-fetch/polyfill");
 
     Astronaut Launch Checklist Form:
 
-      1.  use preventDefault() to prevent sending request that reloads page
+      1.  SubmitEvent.preventDefault() prevents page re-loading request send
 
-            if (error) { event.preventDefault(); alert("message"); }
+      2.  validate that each input has a value of correct data type
 
-            try-catch? --> predicts & bridges errors to continue code flow
-
-      2.  ensure that each user-submitted input:
-
-            A.  has a value
-
-                  inputElementList.forEach(input => {
-                    if (input.value.length === 0) {
-                      alert("Must enter a value for each field.");
-                    }
-                  });
-
-            B.  has correct data type
-
-                  inputElementList.forEach(input => {
-
-                    if (pilotNameInput.value.type === "text") {
-                      if (copilotNameInput.value.type === "text") {
-
-                      } else {}
-                    } else {}
-
-                    if (fuelLevel.type === "number") {
-                      if (cargoMass.type === "number") {
-
-                      } else {}
-                    } else {}
-                  });
-
-      3.  input validation updates launch checklist:
+      3.  update launch checklist with valid input values:
 
             if (shuttle variable !== lanchReady) {
               add shuttle variable to <div id="faultyItems">
@@ -54,14 +25,14 @@ require("cross-fetch/polyfill");
                     using template literals
 
           if (fuelLevel < 10,000 liters):
-            list of #faultyItems.display: visible; ?
-            fuelStatus = "not enough fuel for mission."; --> alert(""); ?
+            list of #faultyItems.display: visible;
+            fuelStatus = "not enough fuel for mission."; --> alert("");
             <h2>.innnerHTML = ${launchStatus} = “Shuttle not ready for launch”;
             <h2>.color: red
 
           if (cargoMass > 10,000 kilograms):
-            list of #faultyItems.display: visible; ?
-            cargoStatus = "too much mass for shuttle to take off."; --> alert(""); ?
+            list of #faultyItems.display: visible;
+            cargoStatus = "too much mass for shuttle to take off."; --> alert("");
             launchStatus = “Shuttle not ready for launch” --> color: red;
 
       4.  if (all shuttle variables === launchReady) {
@@ -71,30 +42,86 @@ require("cross-fetch/polyfill");
 .................................*/
 
 function validateInput(testInput) {
-  // pilot & co-pilot names are strings
-  // fuel level & cargo mass are numbers
+  //  pilot & copilot names are strings
+  //  fuelLevel & cargoLevel are numbers
+  //  NOTE: isNaN(value) method returns true or false
 
-  // string parameter --> returns "Empty", "Not a Number", "Is a Number"
+  //  1.  input validation
+  if (testInput.length === 0) {
+    SubmitEvent.preventDefault();
+    alert("Must enter a value for each field.");
+    return "Empty";
+  }
 
-}
+  if (isNaN(testInput)) {
+    return "Not a Number";
+  }
+  else {
+    return "Is a Number";
+  }
+} //  returns: "Empty", "Not a Number", or "Is a Number" ?
 
 function formSubmission(
   // PARAMETERS:
   document, // dom
-  list, // array
+  list, // array ?
   pilot, // string
   copilot, // string
-  fuelLevel, // string?
-  cargoLevel // string?
+  fuelLevel, // string
+  cargoLevel // string
   ) {
-  validateInput(pilot, copilot, fuelLevel, cargoLevel);
+  //  2.  input type error handling
+  if (validateInput(pilot) === "Is a Number") {
+    SubmitEvent.preventDefault();
+    return alert("Must not enter a number.");
+  };
+  if (validateInput(copilot) === "Is a Number") {
+    SubmitEvent.preventDefault();
+    return alert("Must not enter a number.");
+  };
+  if (validateInput(fuelLevel) === "Not a Number") {
+    SubmitEvent.preventDefault();
+    return alert("Must enter a number.");
+  };
+  if (validateInput(cargoLevel) === "Not a Number") {
+    SubmitEvent.preventDefault();
+    return alert("Must enter a number.");
+  };
 
-  //  NOTE: isNaN(value) method returns true or false
-  //  update launch checklist with validated parameter values
-  //  call formSubmission() in script.js
+  //  3.  update launch checklist with valid parameter input values
+
+/*
+A.  if (shuttle variable !== lanchReady) {
+      add shuttle variable to <div> #faultyItems
+    }
+
+B.   use template literals to update: <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot
+
+C.  if (fuelLevel < 10000) {
+
+      list of #faultyItems.display: visible; ?
+
+      #fuelStatus.innerHTML = "not enough fuel for mission.";
+      alert("not enough fuel for mission.");
+
+      <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
+      <h2> #launchStatus.color: red;
+    }
+
+D.  if (cargoMass > 10000) {
+
+      list of #faultyItems.display: visible; ?
+
+      #cargoStatus.innerHTML = "too much mass for shuttle to take off.";
+      alert("too much mass for shuttle to take off.");
+
+      <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
+      <h2> #launchStatus.color: red;
+    }
+*/
+
 
 }
-
 /*  ...............................
 
 PART TWO: FETCH PLANETARY JSON DATA
@@ -122,6 +149,7 @@ fetch planetary JSON data to inform crew of mission destination planet:
 ....................................................*/
 
 async function myFetch() {
+  // try-catch? --> predicts & bridges errors to continue code flow
   let planetsReturned;
 
   planetsReturned = await fetch().then(function (response) {});
@@ -159,3 +187,14 @@ module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
+
+/*
+on form submit:
+  validate inputs,
+  if any fail, add to #faultyItems & alert("errorMessage"),
+  otherwise update #launchStatus to "Shuttle is launch ready"
+
+fetch planetList API:
+  select random index number,
+  add that planet's json data to #missionTarget
+*/
