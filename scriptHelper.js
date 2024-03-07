@@ -1,7 +1,9 @@
 require("cross-fetch/polyfill");
 
 /*  TASK FLOW
+
 on form submit:
+
   PART ONE: validate inputs
     if any fail,
       prevent page reload,
@@ -77,7 +79,7 @@ function validateInput(testInput) {
 
 function formSubmission(
   // PARAMETERS:
-  document, // dom
+  document, // D.O.M.
   list, // array ?
   pilot, // string
   copilot, // string
