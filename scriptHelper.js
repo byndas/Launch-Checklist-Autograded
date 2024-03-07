@@ -4,14 +4,14 @@ require("cross-fetch/polyfill");
 
 on form submit:
 
-  PART ONE: validate inputs
+  PART ONE: VALIDATE INPUTS
     if any fail,
       prevent page reload,
       add that shuttle info with shuttle-launch-unready-message to #faultyItems display
       alert("errorMessage"),
     otherwise, update #launchStatus to "Shuttle is launch ready"
 
-  PART TWO: fetch planetList API
+  PART TWO: FETCH PLANETARY JSON DATA --> planetList API
     select random planet from data response via its index number,
     add that planet's json data to #missionTarget
 
@@ -37,8 +37,8 @@ on form submit:
             }
 
           update <li> pilotStatus & copilotStatus
-                  to include pilotName & copilotName
-                    using template literals
+            to include pilotName & copilotName
+              using template literals
 
           if (fuelLevel < 10,000 liters):
             list of #faultyItems.display: visible;
