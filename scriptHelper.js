@@ -111,7 +111,8 @@ A.  if (shuttle variable !== lanchReady) {
       add shuttle variable to <div> #faultyItems
     }
 
-B.   use template literals to update: <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot
+B.   use template literals to update:
+        <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot parameters
 
 C.  if (fuelLevel < 10000) {
 
