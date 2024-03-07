@@ -20,11 +20,11 @@ on form submit:
 
     PART ONE: VALIDATE INPUTS
 
-      create launch checklist,
-        validating shuttle info,
-          preventing unready launch
+      compose launch checklist --formSubmission-- function that:
+        validates shuttle info,
+          prevents unready launch
 
-    Astronaut Launch Checklist Form:
+    Launch Checklist Form:
 
       1.  SubmitEvent.preventDefault() prevents page re-loading request send
 
