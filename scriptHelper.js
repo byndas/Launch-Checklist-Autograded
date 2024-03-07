@@ -1,6 +1,20 @@
 require("cross-fetch/polyfill");
 
-/*  .........................
+/*  TASK FLOW
+on form submit:
+  PART ONE: validate inputs
+    if any fail,
+      prevent page reload,
+      add that shuttle info with shuttle-launch-unready-message to #faultyItems display
+      alert("errorMessage"),
+    otherwise, update #launchStatus to "Shuttle is launch ready"
+
+  PART TWO: fetch planetList API
+    select random planet from data response via its index number,
+    add that planet's json data to #missionTarget
+
+..........................................................................................................................
+..........................................................................................................................
 
     PART ONE: VALIDATE INPUTS
 
@@ -39,7 +53,7 @@ require("cross-fetch/polyfill");
             indicate that shuttle is launch ready via DOM element.display: visible;
             launchStatus = “Shuttle is ready for launch” --> color: green;
           }
-.................................*/
+*/
 
 function validateInput(testInput) {
   //  pilot & copilot names are strings
@@ -118,11 +132,11 @@ D.  if (cargoMass > 10000) {
       <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
       <h2> #launchStatus.color: red;
     }
-*/
+  }
+/*
+..........................................................................................................................
+..........................................................................................................................
 
-
-}
-/*  ...............................
 
 PART TWO: FETCH PLANETARY JSON DATA
 
@@ -187,14 +201,3 @@ module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
 module.exports.myFetch = myFetch;
-
-/*
-on form submit:
-  validate inputs,
-  if any fail, add to #faultyItems & alert("errorMessage"),
-  otherwise update #launchStatus to "Shuttle is launch ready"
-
-fetch planetList API:
-  select random index number,
-  add that planet's json data to #missionTarget
-*/
