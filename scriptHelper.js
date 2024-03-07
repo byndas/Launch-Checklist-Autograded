@@ -81,10 +81,10 @@ function formSubmission(
   // PARAMETERS:
   document, // D.O.M.
   list, // array ?
-  pilot, // string
-  copilot, // string
-  fuelLevel, // string
-  cargoLevel // string
+  pilot, // text in string
+  copilot, // text in string
+  fuelLevel, // number in string
+  cargoLevel // number in string
   ) {
   //  2.  input type error handling
   if (validateInput(pilot) === "Is a Number") {
