@@ -112,7 +112,7 @@ async function myFetch() {
 function pickPlanet(planets) {
   let randomIndex = Math.floor(Math.random() * planets.length);
 
-  console.log("planets[randomIndex]:", planets[randomIndex])
+  console.log("planets[`${randomIndex}`]:", planets[randomIndex])
   return planets[randomIndex];
 }
 
