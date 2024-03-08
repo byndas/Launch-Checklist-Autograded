@@ -23,7 +23,7 @@ function validateInput(testInput) {
   //  NOTE: isNaN(value) method returns true or false
 
   if (!testInput.length) {
-    alert("Must enter a value for each field.");
+    // alert("Must enter a value for each field.");
     return "Empty";
   }
 
@@ -35,29 +35,30 @@ function validateInput(testInput) {
   }
 } //  returns: "Empty", "Not a Number", or "Is a Number" ?
 
-function formSubmission(
-  // PARAMETERS:
-  document, // D.O.M. --> unnecessary
-  list, // document.querySelector("#launchStatus") ?
-  pilot, // text in string
-  copilot, // text in string
-  fuelLevel, // number in string
-  cargoLevel, // number in string
-  event
-  ) {
+function formSubmission(document) {
+  // let list; // = document.getElementById("faultyItems").value;
+  let pilot = document.getElementById("pilotName").value;
+  let copilot = document.getElementById("copilotName").value;
+  let fuelLevel = document.getElementById("fuelLevel").value;
+  let cargoLevel = document.getElementById("cargoMass").value;
   let launchStatusId = document.querySelector("#launchStatus");
+
   //  input type error handling
   if (validateInput(pilot) === "Is a Number") {
-    return alert("Must not enter a number.");
+    // return alert("Must not enter a number.");
+    return;
   };
   if (validateInput(copilot) === "Is a Number") {
-    return alert("Must not enter a number.");
+    // return alert("Must not enter a number.");
+    return;
   };
   if (validateInput(fuelLevel) === "Not a Number") {
-    return alert("Must enter a number.");
+    // return alert("Must enter a number.");
+    return;
   };
   if (validateInput(cargoLevel) === "Not a Number") {
-    return alert("Must enter a number.");
+    // return alert("Must enter a number.");
+    return;
   };
   //  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
   //    make #faultyItems visible
@@ -70,13 +71,15 @@ function formSubmission(
     launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusId.style.color = "red";
     document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
-    return alert("Fuel level too low for launch");
+    // return alert("Fuel level too low for launch");
+    return;
   }
   if (cargoLevel > 10000) {
     launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusId.style.color = "red";
     document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
-    return alert("Cargo mass too heavy for launch");
+    // return alert("Cargo mass too heavy for launch");
+    return;
   }
   launchStatusId.innerHTML = "Shuttle is ready for launch";
   launchStatusId.style.color = "green";
@@ -106,48 +109,34 @@ fetch planetary JSON data:
 ............................................*/
 
 async function myFetch() { // WORKS!
-
-  await fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json());
-
-  // let planetsReturned;
-
-
-  // planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-  //   planetsReturned = response.json();
-  // });
-
-  // return planetsReturned;
+  return await fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json());
 }
 
 function pickPlanet(planets) { // WORKS!
   console.log("planets:", planets);
 
-  let randomIndex = Math.floor(Math.random() * planets.length);
+  const randomIndex = Math.floor(Math.random() * planets.length);
   console.log("randomIndex:", randomIndex);
 
   console.log("planets[randomIndex]:", planets[randomIndex]);
   return planets[randomIndex];
 }
 
-function addDestinationInfo( // NEEDS TO WORK!
+function addDestinationInfo( // WORKS!
   document,
-  name,
-  diameter,
-  star,
-  distance,
-  moons,
-  imageUrl
+  planetDestination
 ) {
+
   document.querySelector("#missionTarget").innerHTML =
     `<h2>Mission Destination</h2>
       <ol>
-        <li>Name: ${name}</li>
-        <li>Diameter: ${diameter}</li>
-        <li>Star: ${star}</li>
-        <li>Distance from Earth: ${distance}</li>
-        <li>Number of Moons: ${moons}</li>
-    </ol>
-    <img src=${imageUrl}>
+        <li>Name: ${planetDestination.name}</li>
+        <li>Diameter: ${planetDestination.diameter}</li>
+        <li>Star: ${planetDestination.star}</li>
+        <li>Distance from Earth: ${planetDestination.distance}</li>
+        <li>Number of Moons: ${planetDestination.moons}</li>
+      </ol>
+      <img src="${planetDestination.image}" />
     `;
 }
 
