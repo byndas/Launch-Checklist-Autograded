@@ -3,58 +3,18 @@ require("cross-fetch/polyfill");
 /*  TASK FLOW
 
 on form submit:
-
+..........................................................................................................................
   PART ONE: VALIDATE INPUTS
     if any fail,
       prevent page re-load,
-      add that shuttle info with shuttle-launch-unready-message to #faultyItems display
-      alert("errorMessage"),
+      add that shuttle info with shuttle-launch-unready-message to a visible #faultyItems
+      return alert("errorMessage"),
     otherwise, update #launchStatus to display "Shuttle is launch ready"
-
+..........................................................................................................................
   PART TWO: FETCH PLANETARY JSON DATA --> planetList API
-    select random planet from data response via its index number,
+    select random planet object from data response via its index number,
     add that planet's json data to #missionTarget
-
 ..........................................................................................................................
-..........................................................................................................................
-
-    PART ONE: VALIDATE INPUTS
-
-      compose launch checklist --formSubmission-- function that:
-        validates shuttle info,
-          prevents unready launch
-
-    Launch Checklist Form:
-
-      1.  SubmitEvent.preventDefault() prevents page re-loading request send
-
-      2.  validate that each input has a value of correct data type
-
-      3.  update launch checklist with valid input values:
-
-            if (shuttle variable !== lanchReady) {
-              add shuttle variable to <div id="faultyItems">
-            }
-
-          update <li> pilotStatus & copilotStatus
-            to include pilotName & copilotName
-              using template literals
-
-          if (fuelLevel < 10,000 liters):
-            list of #faultyItems.display: visible;
-            fuelStatus = "not enough fuel for mission."; --> alert("");
-            <h2>.innnerHTML = ${launchStatus} = “Shuttle not ready for launch”;
-            <h2>.color: red
-
-          if (cargoMass > 10,000 kilograms):
-            list of #faultyItems.display: visible;
-            cargoStatus = "too much mass for shuttle to take off."; --> alert("");
-            launchStatus = “Shuttle not ready for launch” --> color: red;
-
-      4.  if (all shuttle variables === launchReady) {
-            indicate that shuttle is launch ready via DOM element.display: visible;
-            launchStatus = “Shuttle is ready for launch” --> color: green;
-          }
 */
 
 function validateInput(testInput) {
@@ -131,9 +91,7 @@ function formSubmission(
 ..........................................................................................................................
 
 PART TWO: FETCH PLANETARY JSON DATA
-
-      5.  update mission destination planet info
-
+          --> to update #missionTarget with random planet info
 
 fetch planetary JSON data to inform crew of mission destination planet:
   review planetary list, choose a random destination, note its index number
