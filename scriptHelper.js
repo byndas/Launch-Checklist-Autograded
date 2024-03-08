@@ -86,6 +86,7 @@ function formSubmission(
   fuelLevel, // number in string
   cargoLevel // number in string
   ) {
+  const launchStatusId = document.querySelector("#launchStatus");
   //  2.  input type error handling
   if (validateInput(pilot) === "Is a Number") {
     SubmitEvent.preventDefault();
@@ -106,36 +107,26 @@ function formSubmission(
   //  3.  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
   //    A.  make #faultyItems visible
   document.querySelector("#faultyItems").style.visibility = "visible";
-  //    B.  use template literals to put input values in their list-item <li> id
-  document.querySelector("#fuelStatus").
-  document.querySelector("#cargoStatus")
+  //    B.  use template literals to update list-items
+  document.querySelector("#pilotStatus").innerHTML = `pilot ${pilot} is ready for launch`;
+  document.querySelector("#copilotStatus").innerHTML = `copilot ${copilot} is ready for launch`;
+  //    C.  handle insufficient fuel & cargo levels
+  if (fuelLevel < 10000) {
+    launchStatusId.innerHTML = "Shuttle not ready for launch";
+    launchStatusId.stlye.color = "red";
+    document.querySelector("#fuelStatus").innerHTML = `not enough fuel for mission`;
+    return alert("not enough fuel for mission.");
+  }
+  if (cargoMass > 10000) {
+    launchStatusId.innerHTML = "Shuttle not ready for launch";
+    launchStatusId.style.color = "red";
+    document.querySelector("#cargoStatus").innerHTML = "too much mass for shuttle to take off";
+    return alert("too much mass for shuttle to take off.");
+  }
+  launchStatusId.innerHTML = "Shuttle is ready for launch";
+  launchStatusId.syle.color = "green";
 }
 /*
-      <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot parameters
-
-C.  if (fuelLevel < 10000) {
-
-      #fuelStatus.innerHTML = "not enough fuel for mission.";
-        alert("not enough fuel for mission.");
-
-      #launchStatus.innerHTML = “Shuttle not ready for launch”;
-      #launchStatus.stlye.color = "red";
-    }
-
-D.  if (cargoMass > 10000) {
-
-      #cargoStatus.innerHTML = "too much mass for shuttle to take off.";
-        alert("too much mass for shuttle to take off.");
-
-      #launchStatus.innerHTML = “Shuttle not ready for launch”;
-      #launchStatus.style.color = "red";
-    }
-
-4.  if (fuel & cargo are launch-ready) {
-      #launchStatus = “Shuttle is ready for launch”
-      #launchStatus.syle.color = "green";
-    }
-  /*
 ..........................................................................................................................
 ..........................................................................................................................
 
