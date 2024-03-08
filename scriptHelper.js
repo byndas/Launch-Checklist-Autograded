@@ -35,14 +35,9 @@ function validateInput(testInput) {
   }
 } //  returns: "Empty", "Not a Number", or "Is a Number" ?
 
-function formSubmission(document) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   // let list; // = document.getElementById("faultyItems").value;
-  let pilot = document.getElementById("pilotName").value;
-  let copilot = document.getElementById("copilotName").value;
-  let fuelLevel = document.getElementById("fuelLevel").value;
-  let cargoLevel = document.getElementById("cargoMass").value;
   let launchStatusId = document.querySelector("#launchStatus");
-
   //  input type error handling
   if (validateInput(pilot) === "Is a Number") {
     // return alert("Must not enter a number.");

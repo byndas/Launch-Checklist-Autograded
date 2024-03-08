@@ -18,7 +18,15 @@ window.addEventListener("load", function () {
 
   document.querySelector("form").addEventListener("submit", (event) => {
     event.preventDefault();
-    formSubmission(document);
+
+    let list;
+    let pilot = document.getElementById("pilotName").value;
+    let copilot = document.getElementById("copilotName").value;
+    let fuelLevel = document.getElementById("fuelLevel").value;
+    let cargoLevel = document.getElementById("cargoMass").value;
+    
+    
+    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
   });
 
   //  ..........................................................................................................................
