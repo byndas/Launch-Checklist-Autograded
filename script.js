@@ -1,4 +1,4 @@
-const {
+const helpers = {
   addDestinationInfo,
   validateInput,
   formSubmission,
@@ -19,6 +19,9 @@ window.addEventListener("load", function () {
   //  ..................................
   const form = document.querySelector("form");
 
+// pilotName = ; ect.
+// list = [];
+
   form.addEventListener("submit", formSubmission(document, list, pilotName,copilotName, fuelLevel, cargoMass));
 
   //  PART TWO: FETCH PLANETARY DATA
@@ -33,7 +36,7 @@ window.addEventListener("load", function () {
       console.log(listedPlanets);
 
       //  use pickPlanet() & addDestinationInfo() helper functions
-      //    to select random planet from listedPlanets
+      //    to select random planet from listedPlanets --> six planets
       //      & pass that planet info to addDestinationInfo()
       //        reload page to see mission target info
     });

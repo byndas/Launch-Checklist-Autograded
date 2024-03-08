@@ -79,8 +79,8 @@ function validateInput(testInput) {
 
 function formSubmission(
   // PARAMETERS:
-  document, // D.O.M.
-  list, // array ?
+  document, // D.O.M. --> unnecessary
+  list, // array of remaining parameters or <li> items ? --> list = document.querySelector("#---") ?
   pilot, // text in string
   copilot, // text in string
   fuelLevel, // number in string
@@ -104,39 +104,43 @@ function formSubmission(
     return alert("Must enter a number.");
   };
 
-  //  3.  update launch checklist with valid parameter input values
+  //  3.  update launch checklist with validated input parameter values
+  //        display pilot, copilot, fuel & cargo launch-readiness
 
 /*
-A.  if (shuttle variable !== lanchReady) {
-      add shuttle variable to <div> #faultyItems
-    }
+A.  add shuttle variables to <div> #faultyItems
 
-B.   use template literals to update:
-        <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot parameters
+B.  use template literals to update:
+      <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot parameters
 
 C.  if (fuelLevel < 10000) {
 
-      list of #faultyItems.display: visible; ?
+      #faultyItems.visibility: visible;
 
       #fuelStatus.innerHTML = "not enough fuel for mission.";
-      alert("not enough fuel for mission.");
+        alert("not enough fuel for mission.");
 
       <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
-      <h2> #launchStatus.color: red;
+        <h2> #launchStatus.color: red;
     }
 
 D.  if (cargoMass > 10000) {
 
-      list of #faultyItems.display: visible; ?
+      list of #faultyItems.visibility: visible;
 
       #cargoStatus.innerHTML = "too much mass for shuttle to take off.";
-      alert("too much mass for shuttle to take off.");
+        alert("too much mass for shuttle to take off.");
 
       <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
-      <h2> #launchStatus.color: red;
+        <h2> #launchStatus.color: red;
     }
-  }
+
+4.  if (all shuttle variables === launchReady) {
+      indicate that shuttle is launch ready via DOM element.display: visible;
+      launchStatus = “Shuttle is ready for launch” --> color: green;
+    }
 /*
+}
 ..........................................................................................................................
 ..........................................................................................................................
 
@@ -168,7 +172,7 @@ async function myFetch() {
   // try-catch? --> predicts & bridges errors to continue code flow
   let planetsReturned;
 
-  planetsReturned = await fetch().then(function (response) {});
+  planetsReturned = await fetch(someURLstring).then(function (response) {});
 
   return planetsReturned;
 }
