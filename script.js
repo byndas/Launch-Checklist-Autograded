@@ -7,8 +7,8 @@ window.addEventListener("load", function () {
   let fuelLevel = document.getElementById("fuelLevel").value;
   let cargoMass = document.getElementById("cargoMass").value;
 
-  // let listedPlanets;
-  // let listedPlanetsResponse = myFetch(); // returns a promise that returns planets json
+  let listedPlanets;
+  const listedPlanetsResponse = myFetch(); // returns a promise that returns planets json
 //  ..........................................................................................................................
 //  ..........................................................................................................................
 
@@ -24,21 +24,22 @@ window.addEventListener("load", function () {
     event.preventDefault();
     formSubmission(document, list, pilotName, copilotName, fuelLevel, cargoMass)
   });
-  
+
   //  ..........................................................................................................................
   //  ..........................................................................................................................
-  
+
   //  PART TWO: FETCH PLANETARY DATA
   //  ..............................
-console.log("myFetch", myFetch().stringify());
 
-  myFetch()
+listedPlanetsResponse
     .then((result) => {
       console.log("result", result);
-      let listedPlanets = result;
+
+      listedPlanets = result;
+
       console.log("listedPlanets1", listedPlanets);
     })
-    .then((listedPlanets) => {
+    .then(() => {
       // try-catch? --> predicts & bridges errors to continue code flow
       //  open browser dev tools to see planet list
       console.log("listedPlanets2", listedPlanets);
@@ -47,7 +48,7 @@ console.log("myFetch", myFetch().stringify());
       //    to select a random planet from listedPlanets
       //      & pass that planet info to addDestinationInfo()
       //        reload page to see mission target info
-      let planetDestination = pickPlanet(listedPlanets);
+      const planetDestination = pickPlanet(listedPlanets);
 
       console.log("planetDestination", planetDestination)
       // addDestinationInfo(document, ...planetDestination);

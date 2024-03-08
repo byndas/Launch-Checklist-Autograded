@@ -47,17 +47,21 @@ function formSubmission(
   ) {
   let launchStatusId = document.querySelector("#launchStatus");
   //  input type error handling
-  if (validateInput(pilot, event) === "Is a Number") {
-    return alert("Must not enter a number.");
+  if (validateInput(pilot) === "Is a Number") {
+    alert("Must not enter a number.");
+    return false;
   };
-  if (validateInput(copilot, event) === "Is a Number") {
-    return alert("Must not enter a number.");
+  if (validateInput(copilot) === "Is a Number") {
+    alert("Must not enter a number.");
+    return false;
   };
-  if (validateInput(fuelLevel, event) === "Not a Number") {
-    return alert("Must enter a number.");
+  if (validateInput(fuelLevel) === "Not a Number") {
+    alert("Must enter a number.");
+    return false;
   };
-  if (validateInput(cargoLevel, event) === "Not a Number") {
-    return alert("Must enter a number.");
+  if (validateInput(cargoLevel) === "Not a Number") {
+    alert("Must enter a number.");
+    return false;
   };
   //  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
   //    make #faultyItems visible
@@ -68,7 +72,7 @@ function formSubmission(
   //    handle insufficient fuel & cargo levels
   if (fuelLevel < 10000) {
     launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
-    launchStatusId.stlye.color = "red";
+    launchStatusId.style.color = "red";
     document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
     return alert("Fuel level too low for launch");
   }
@@ -106,13 +110,22 @@ fetch planetary JSON data:
 ............................................*/
 
 async function myFetch() {
-  await fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json());
+
+  let planetsReturned;
+
+  planetsReturned = await fetch().then( function(response) {
+    planetsReturned = response.json();
+  });
+
+  return planetsReturned;
+  // await fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json());
 }
 
 function pickPlanet(planets) {
   let randomIndex = Math.floor(Math.random() * planets.length);
 
-  console.log("planets[`${randomIndex}`]:", planets[randomIndex])
+  console.log("planets[`${randomIndex}`]:", planets[randomIndex]);
+
   return planets[randomIndex];
 }
 
