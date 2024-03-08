@@ -48,20 +48,16 @@ function formSubmission(
   let launchStatusId = document.querySelector("#launchStatus");
   //  input type error handling
   if (validateInput(pilot) === "Is a Number") {
-    alert("Must not enter a number.");
-    return false;
+    return alert("Must not enter a number.");
   };
   if (validateInput(copilot) === "Is a Number") {
-    alert("Must not enter a number.");
-    return false;
+    return alert("Must not enter a number.");
   };
   if (validateInput(fuelLevel) === "Not a Number") {
-    alert("Must enter a number.");
-    return false;
+    return alert("Must enter a number.");
   };
   if (validateInput(cargoLevel) === "Not a Number") {
-    alert("Must enter a number.");
-    return false;
+    return alert("Must enter a number.");
   };
   //  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
   //    make #faultyItems visible
@@ -109,27 +105,31 @@ fetch planetary JSON data:
             save that element, no return value
 ............................................*/
 
-async function myFetch() {
+async function myFetch() { // WORKS!
 
-  let planetsReturned;
+  await fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json());
 
-  planetsReturned = await fetch().then( function(response) {
-    planetsReturned = response.json();
-  });
+  // let planetsReturned;
 
-  return planetsReturned;
-  // await fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json());
+
+  // planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+  //   planetsReturned = response.json();
+  // });
+
+  // return planetsReturned;
 }
 
-function pickPlanet(planets) {
+function pickPlanet(planets) { // WORKS!
+  console.log("planets:", planets);
+
   let randomIndex = Math.floor(Math.random() * planets.length);
+  console.log("randomIndex:", randomIndex);
 
-  console.log("planets[`${randomIndex}`]:", planets[randomIndex]);
-
+  console.log("planets[randomIndex]:", planets[randomIndex]);
   return planets[randomIndex];
 }
 
-function addDestinationInfo(
+function addDestinationInfo( // NEEDS TO WORK!
   document,
   name,
   diameter,

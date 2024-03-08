@@ -51,7 +51,7 @@ listedPlanetsResponse
       const planetDestination = pickPlanet(listedPlanets);
 
       console.log("planetDestination", planetDestination)
-      // addDestinationInfo(document, ...planetDestination);
+      addDestinationInfo(document, ...Object.keys(planetDestination));
       // name,diameter,star,distance,moons,imageUrl
     });
 });
