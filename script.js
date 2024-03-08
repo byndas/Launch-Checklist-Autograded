@@ -6,23 +6,37 @@ const helpers = {
   myFetch
 } = require("./scriptHelper.js");
 
-window.addEventListener("load", function () {
-  let listedPlanets;
-  let listedPlanetsResponse = myFetch(); // returns a promise that returns a data-object
+// import {
+//   addDestinationInfo,
+//   validateInput,
+//   formSubmission,
+//   pickPlanet,
+//   myFetch
+// } from "./scriptHelper.js";
 
-  //  PART ONE: VALIDATE INPUTS
-  //  .........................
-  //    create launch checklist:
-  //      validate shuttle launch variables,
-  //        prevent unready launch
-  //          indicate when launch ready
-  //  ..................................
+
+window.addEventListener("load", function () {
+  const document = document;
+  let list;
+  let pilotName;
+  let copilotName;
+  let fuelLevel;
+  let cargoMass;
+
+  let listedPlanets;
+  let listedPlanetsResponse = myFetch(); // returns a promise that returns json
+
   const form = document.querySelector("form");
 
-// pilotName = ; ect.
-// list = [];
+//  PART ONE: VALIDATE INPUTS
+//  .........................
+//    create launch checklist:
+//      validate shuttle launch variables,
+//        prevent unready launch
+//          indicate when launch ready
+//  ..................................
 
-  form.addEventListener("submit", formSubmission(document, list, pilotName,copilotName, fuelLevel, cargoMass));
+  form.addEventListener("submit", helpers.formSubmission(document, list, pilotName, copilotName, fuelLevel, cargoMass));
 
   //  PART TWO: FETCH PLANETARY DATA
   //  ..............................
