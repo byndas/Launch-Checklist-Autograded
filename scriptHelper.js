@@ -104,17 +104,17 @@ function formSubmission(
     return alert("Must enter a number.");
   };
   //  3.  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
-  //    A.  add shuttle variables to their check list item & make #faultyItems visible
+  //    A.  make #faultyItems visible
   document.querySelector("#faultyItems").style.visibility = "visible";
+  //    B.  use template literals to add input values to their check list item
 
+  document.querySelector("#")
+  document.querySelector("#")
 }
 /*
-B.  use template literals to update:
       <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot parameters
 
 C.  if (fuelLevel < 10000) {
-
-      #faultyItems.visibility: visible;
 
       #fuelStatus.innerHTML = "not enough fuel for mission.";
         alert("not enough fuel for mission.");
@@ -125,20 +125,17 @@ C.  if (fuelLevel < 10000) {
 
 D.  if (cargoMass > 10000) {
 
-      list of #faultyItems.visibility: visible;
-
       #cargoStatus.innerHTML = "too much mass for shuttle to take off.";
         alert("too much mass for shuttle to take off.");
 
-      <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
-        <h2> #launchStatus.color: red;
+      #launchStatus.innerHTML = “Shuttle not ready for launch”;
+      #launchStatus.style.color = "red";
     }
 
-4.  if (all shuttle variables === launchReady) {
-      indicate that shuttle is launch ready via DOM element.display: visible;
-      launchStatus = “Shuttle is ready for launch” --> color: green;
+4.  if (fuel & cargo are launch-ready) {
+      #launchStatus = “Shuttle is ready for launch”
+      #launchStatus.syle.color = "green";
     }
-  }
   /*
 ..........................................................................................................................
 ..........................................................................................................................
