@@ -106,10 +106,9 @@ function formSubmission(
   //  3.  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
   //    A.  make #faultyItems visible
   document.querySelector("#faultyItems").style.visibility = "visible";
-  //    B.  use template literals to add input values to their check list item
-
-  document.querySelector("#")
-  document.querySelector("#")
+  //    B.  use template literals to put input values in their list-item <li> id
+  document.querySelector("#fuelStatus").
+  document.querySelector("#cargoStatus")
 }
 /*
       <li> (#pilotStatus & #copilotStatus).innerHTML = pilot & copilot parameters
@@ -119,8 +118,8 @@ C.  if (fuelLevel < 10000) {
       #fuelStatus.innerHTML = "not enough fuel for mission.";
         alert("not enough fuel for mission.");
 
-      <h2> #launchStatus.innerHTML = “Shuttle not ready for launch”;
-        <h2> #launchStatus.color: red;
+      #launchStatus.innerHTML = “Shuttle not ready for launch”;
+      #launchStatus.stlye.color = "red";
     }
 
 D.  if (cargoMass > 10000) {
