@@ -16,13 +16,13 @@ const helpers = {
 
 
 window.addEventListener("load", function () {
-  const document = document;
-  let list;
-  let pilotName;
-  let copilotName;
-  let fuelLevel;
-  let cargoMass;
-
+  // const document = document;
+  // const list = document.getElementById("faultyItems");
+  // const pilotName = document.getElementById("pilotStatus");
+  // const copilotName = document.getElementById("copilotStatus");
+  // const fuelLevel = document.getElementById("fuelStatus");
+  // const cargoMass = document.getElementById("cargoStatus");
+  // const h2 = document.getElementById("launchStatus");
   let listedPlanets;
   let listedPlanetsResponse = myFetch(); // returns a promise that returns json
 

@@ -40,7 +40,7 @@ function validateInput(testInput) {
 function formSubmission(
   // PARAMETERS:
   document, // D.O.M. --> unnecessary
-  list, // array of remaining parameters or <li> items ? --> list = document.querySelector("#---") ?
+  list, // array of remaining parameters or <li> list-items ? --> list = document.querySelector("#---") ?
   pilot, // text in string
   copilot, // text in string
   fuelLevel, // number in string
@@ -68,20 +68,20 @@ function formSubmission(
   //    A.  make #faultyItems visible
   document.querySelector("#faultyItems").style.visibility = "visible";
   //    B.  use template literals to update list-items
-  document.querySelector("#pilotStatus").innerHTML = `pilot ${pilot} is ready for launch`;
-  document.querySelector("#copilotStatus").innerHTML = `copilot ${copilot} is ready for launch`;
+  document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+  document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
   //    C.  handle insufficient fuel & cargo levels
   if (fuelLevel < 10000) {
-    launchStatusId.innerHTML = "Shuttle not ready for launch";
+    launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusId.stlye.color = "red";
-    document.querySelector("#fuelStatus").innerHTML = `not enough fuel for mission`;
-    return alert("not enough fuel for mission.");
+    document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
+    return alert("Fuel level too low for launch");
   }
   if (cargoMass > 10000) {
-    launchStatusId.innerHTML = "Shuttle not ready for launch";
+    launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusId.style.color = "red";
-    document.querySelector("#cargoStatus").innerHTML = "too much mass for shuttle to take off";
-    return alert("too much mass for shuttle to take off.");
+    document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
+    return alert("Cargo mass too heavy for launch");
   }
   launchStatusId.innerHTML = "Shuttle is ready for launch";
   launchStatusId.syle.color = "green";
@@ -93,12 +93,12 @@ function formSubmission(
 PART TWO: FETCH PLANETARY JSON DATA
           --> to update #missionTarget with random planet info
 
-fetch planetary JSON data to inform crew of mission destination planet:
+fetch planetary JSON data:
   review planetary list, choose a random destination, note its index number
     fetch multiple JSON objects to return an array of all planet JSON objects
       choose random destination planet via its array index number
 
-  to fetch planet list data:
+  to fetch planetList data:
 
     1.  complete myFetch() to fetch planetary JSON data:
             add the URL
