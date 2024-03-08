@@ -116,7 +116,7 @@ async function myFetch() {
   // try-catch? --> predicts & bridges errors to continue code flow
   let planetsReturned;
 
-  planetsReturned = await fetch(someURLstring).then(function (response) {});
+  planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {});
 
   return planetsReturned;
 }
