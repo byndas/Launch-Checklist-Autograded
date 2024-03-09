@@ -23,7 +23,7 @@ function validateInput(testInput) {
   //  NOTE: isNaN(value) method returns true or false
 
   if (!testInput.length) {
-    // alert("Must enter a value for each field.");
+    // alert("All fields are required!");
     return "Empty";
   }
 
@@ -36,48 +36,46 @@ function validateInput(testInput) {
 } //  returns: "Empty", "Not a Number", or "Is a Number" ?
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  // let list; // = document.getElementById("faultyItems").value;
+  let alertUser = false;
+
   let launchStatusId = document.querySelector("#launchStatus");
+
   //  input type error handling
-  if (validateInput(pilot) === "Is a Number") {
-    // return alert("Must not enter a number.");
-    return;
-  };
-  if (validateInput(copilot) === "Is a Number") {
-    // return alert("Must not enter a number.");
-    return;
-  };
-  if (validateInput(fuelLevel) === "Not a Number") {
-    // return alert("Must enter a number.");
-    return;
-  };
-  if (validateInput(cargoLevel) === "Not a Number") {
-    // return alert("Must enter a number.");
-    return;
-  };
+  if (validateInput(pilot) === "Not a Number") {
+    if (validateInput(copilot) === "Not a Number") {
+      if (validateInput(fuelLevel) === "Is a Number") {
+        if (validateInput(cargoLevel) === "Is a Number") {
+        }
+      }
+    }
+  }
+  // alert("Make sure to enter valid information for each field!");
+
   //  update launch checklist to display launch-ready status of pilot, copilot, fuel & cargo
   //    make #faultyItems visible
-  document.querySelector("#faultyItems").style.visibility = "visible";
+  list.style.visibility = "visible";
   //    use template literals to update list-items
   document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
   document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+
+
   //    handle insufficient fuel & cargo levels
   if (fuelLevel < 10000) {
     launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusId.style.color = "red";
     document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
     // return alert("Fuel level too low for launch");
-    return;
   }
   if (cargoLevel > 10000) {
     launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     launchStatusId.style.color = "red";
     document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
     // return alert("Cargo mass too heavy for launch");
-    return;
   }
-  launchStatusId.innerHTML = "Shuttle is ready for launch";
-  launchStatusId.style.color = "green";
+  else {
+    launchStatusId.innerHTML = "Shuttle is Ready for Launch";
+    launchStatusId.style.color = "green";
+  }
 }
 /*
 ..........................................................................................................................
