@@ -1,56 +1,34 @@
-// const { myFetch, addDestinationInfo, validateInput, formSubmission, pickPlanet } = require("./scriptHelper");
+// const { myFetch, addDestinationInfo, formSubmission, pickPlanet } = require("./scriptHelper");
 
 window.addEventListener("load", function () {
-
-
-  // let listedPlanets;
-  // const listedPlanetsResponse = myFetch(); // returns a promise that returns planets json
-//  ..........................................................................................................................
-//  ..........................................................................................................................
-
-//  PART ONE: VALIDATE INPUTS
-//  .........................
-//    create launch checklist:
-//      validate shuttle launch variables,
-//        prevent unready launch
-//          indicate when launch ready
-//  ..................................
-
+  //  ......................
+  //  HANDLE FORM SUBMISSION
+  //  ......................
   document.querySelector("form").addEventListener("submit", (event) => {
-    event.preventDefault();
+
+    event.preventDefault(); // prevents form submission from re-loading page
 
     const list = document.querySelector("#faultyItems");
     const pilot = document.querySelector('input[name="pilotName"]').value;
     const copilot = document.querySelector('input[name="copilotName"]').value;
     const fuelLevel = document.querySelector('input[name="fuelLevel"]').value;
-    const cargoLevel = document.querySelector('input[name="cargoMass"]').value;
+    const cargoMass = document.querySelector('input[name="cargoMass"]').value;
 
-    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+    formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass);
   });
-
-  //  ..........................................................................................................................
-  //  ..........................................................................................................................
-
-  //  PART TWO: FETCH PLANETARY DATA
   //  ..............................
-
-// listedPlanetsResponse
-myFetch()
+  //  FETCH & DISPLAY PLANETARY JSON
+  //  ..............................
+  myFetch() // returns promise that returns planets json response data
     .then((data) => {
-      // try-catch? --> predicts & bridges errors to continue code flow
-      //  open browser dev tools to see planet list
-      console.log("data1", data);
 
-      // call pickPlanet() & addDestinationInfo()
-      //    to select a random planet from listedPlanets
-      //      & pass that planet info to addDestinationInfo()
-      //        reload page to see mission target info
-      const planetDestination = pickPlanet(data);
+      const planetDestination = pickPlanet(data); // selects random planet
 
-      console.log("planetDestination", planetDestination);
-
-      console.log("Object.values(planetDestination):", Object.values(planetDestination));
-      addDestinationInfo(document, planetDestination);
-                                  // name, diameter, star, distance, moons, imageUrl
-    });
+      addDestinationInfo(document, ...Object.values(planetDestination)); // displays planetDestination
+    }); // try-catch? --> predicts error bridges to continue code flow
 });
+/*
+    let listedPlanets;
+    const listedPlanetsResponse = myFetch();
+    listedPlanetsResponse.then
+  */
