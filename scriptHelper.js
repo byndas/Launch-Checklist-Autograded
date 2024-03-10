@@ -29,8 +29,38 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
 
+  //  show #faultyItems list
+  list.style.visibility = "visible";
+
   const launchStatusId = document.querySelector("#launchStatus");
-  let missionReady = true;
+  const missionReady = (fuelLevel >= 10000) && (cargoMass <= 10000);
+
+  if (missionReady) {
+    launchStatusId.innerHTML = "Shuttle is Ready for Launch";
+    launchStatusId.style.color = "green";
+  }
+  else {
+    launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
+    launchStatusId.style.color = "red";
+  }
+
+  document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+  document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+
+  if (fuelLevel < 10000) {
+    document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
+    // alert("Fuel level too low for launch");
+  }
+  else {
+    document.querySelector("#fuelStatus").innerHTML = "Fuel level high enough for launch";
+  }
+  if (cargoMass > 10000) {
+    document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
+    // alert("Cargo mass too heavy for launch");
+  }
+  else {
+    document.querySelector("#cargoStatus").innerHTML = "Cargo mass low enough for launch";
+  }
 
   //  input type validation handling
   if ((validateInput(pilot) === "Not a Number") &&
@@ -39,32 +69,31 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
       (validateInput(cargoMass) === "Is a Number")) {
     //  all inputs have correct types
     console.log("ALL INPUTS HAVE CORRECT TYPES");
-    //  therefore: use template literals to update crew names to list-items
-    document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-    document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-    //  update mission-ready status of fuel & cargo:
+    // launchStatusId.style.color = "red";
+
+//  update mission-ready status of fuel & cargo:
     //    handle insufficient fuel or cargo numbers
-    if (fuelLevel < 10000) {
-      missionReady = false;
-      document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
-      // alert("Fuel level too low for launch");
-    }
-    if (cargoMass > 10000) {
-      missionReady = false;
-      document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
-      // alert("Cargo mass too heavy for launch");
-    }
-    if (missionReady) {
-      launchStatusId.innerHTML = "Shuttle is Ready for Launch";
-      launchStatusId.style.color = "green";
-    }
-    else {
-      launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
-      launchStatusId.style.color = "red";
-    }
-    //  show #faultyItems list
-    list.style.visibility = "visible";
-    console.log("MISSION-READY LIST IS VISIBLE!");
+    // if (fuelLevel < 10000) {
+    //   // missionReady = false;
+    //   document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
+    //   // alert("Fuel level too low for launch");
+    // }
+    // if (cargoMass > 10000) {
+    //   // missionReady = false;
+    //   document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
+    //   // alert("Cargo mass too heavy for launch");
+    // }
+    // if (missionReady) {
+    //   launchStatusId.innerHTML = "Shuttle is Ready for Launch";
+    //   launchStatusId.style.color = "green";
+    // }
+    // else {
+    //   launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
+    //   launchStatusId.style.color = "red";
+    // }
+    //  therefore: use template literals to update crew names to list-items
+    // document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+    // document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
   }
   else {
     // alert("Make sure to enter valid information for each field!");
@@ -89,22 +118,26 @@ function pickPlanet(planetsJSON) {
   return planetsJSON[randomIndex];
 }
 
-function addDestinationInfo(document, name, diameter, star, distance, image, moons) {
+function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
+
   // adds random planet's json data to #missionTarget via html tags
   document.querySelector("#missionTarget").innerHTML =
-  `<h2>Mission Destination</h2>
-    <ol>
-      <li>Name: ${name}</li>
-      <li>Diameter: ${diameter}</li>
-      <li>Star: ${star}</li>
-      <li>Distance from Earth: ${distance}</li>
-      <li>Number of Moons: ${moons}</li>
-    </ol>
-    <img src="${image}" />
-  `;
 
-  let testTarget = document.querySelector("#missionTarget").innerHTML.replace(/\s/g,'');
-  console.log("testTarget:", testTarget); // logs expected result! test should pass!
+  `<h2>MissionDestination</h2><ol><li>Name:${name}</li><li>Diameter:${diameter}</li><li>Star:${star}</li><li>DistancefromEarth:${distance}</li><li>NumberofMoons:${moons}</li></ol><img src="${image}"/>`
+
+  // `<h2>Mission Destination</h2>
+  //   <ol>
+  //     <li>Name: ${name}</li>
+  //     <li>Diameter: ${diameter}</li>
+  //     <li>Star: ${star}</li>
+  //     <li>Distance from Earth: ${distance}</li>
+  //     <li>Number of Moons: ${moons}</li>
+  //   </ol>
+  //   <img src="${image}" />
+  // `;
+
+  // let testTarget = document.querySelector("#missionTarget").innerHTML.replace(/\s/g,'');
+  // console.log("testTarget:", testTarget); // logs expected result! test should pass!
 }
 
 //  ...................................................
