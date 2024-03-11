@@ -69,6 +69,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
       (validateInput(cargoMass) === "Is a Number")) {
     //  all inputs have correct types
     console.log("ALL INPUTS HAVE CORRECT TYPES");
+
     //  let missionReady = true;
 
     //  use template literals to update crew names to list-items
@@ -121,16 +122,17 @@ function pickPlanet(planetsJSON) {
   // console.log("planetsJSON:", planetsJSON);
 
   const randomIndex = Math.floor(Math.random() * planetsJSON.length);
-
+w
   // console.log("planetsJSON["+randomIndex+"]:", planetsJSON[randomIndex]);
 
   return planetsJSON[randomIndex];
 }
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+// function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
 
   // adds random planet's json data to #missionTarget via html tags
-  document.querySelector("#missionTarget").innerHTML =
+  document.getElementById("missionTarget").innerHTML =
 
   `<h2>Mission Destination</h2>
     <ol>
@@ -140,7 +142,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
       <li>Distance from Earth: ${distance}</li>
       <li>Number of Moons: ${moons}</li>
     </ol>
-    <img src="${imageUrl}" />
+    <img src="${image}" />
   `;
 }
 
