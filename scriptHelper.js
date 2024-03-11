@@ -69,8 +69,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
       (validateInput(cargoMass) === "Is a Number")) {
     //  all inputs have correct types
     console.log("ALL INPUTS HAVE CORRECT TYPES");
+    //  let missionReady = true;
 
-    //  therefore: use template literals to update crew names to list-items
+    //  use template literals to update crew names to list-items
     //  document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
     //  document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 

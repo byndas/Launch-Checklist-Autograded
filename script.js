@@ -14,11 +14,11 @@ window.addEventListener("load", function () {
     // const fuelLevel = document.querySelector('input[name="fuelLevel"]').value;
     // const cargoMass = document.querySelector('input[name="cargoMass"]').value;
 
-    // console.log("this:", this);
-    const pilot = this.elements.pilotName.value;
-    const copilot = this.elements.copilotName.value;
-    const fuelLevel = this.elements.fuelLevel.value;
-    const cargoMass = this.elements.cargoMass.value;
+    // console.log("this:", this); // --> no need to even touch the DOM
+    const pilot = this[0].value;      //  pilotName
+    const copilot = this[1].value;    //  copilotName
+    const fuelLevel = this[2].value;  //  fuelLevel
+    const cargoMass = this[3].value;  //  cargoMass
 
     formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass);
   });
@@ -26,9 +26,9 @@ window.addEventListener("load", function () {
   //  FETCH & DISPLAY PLANETARY JSON
   //  ..............................
     myFetch() // returns promise that returns planets json response data
-    .then((result) => {
+    .then((jsonResponse) => {
 
-      const planetDestination = pickPlanet(result); // selects random planet
+      const planetDestination = pickPlanet(jsonResponse); // selects random planet
       // console.log("planetDestination:", planetDestination);
 
       addDestinationInfo(document, ...planetDestination); // displays planetDestination
