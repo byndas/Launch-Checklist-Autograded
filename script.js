@@ -1,7 +1,5 @@
 // const { myFetch, addDestinationInfo, formSubmission, pickPlanet } = require("./scriptHelper");
 
-const { myFetch } = require("./scriptHelper");
-
 window.addEventListener("load", function () {
   //  ......................
   //  HANDLE FORM SUBMISSION
@@ -16,8 +14,7 @@ window.addEventListener("load", function () {
     // const fuelLevel = document.querySelector('input[name="fuelLevel"]').value;
     // const cargoMass = document.querySelector('input[name="cargoMass"]').value;
 
-    console.log("this:", this);
-
+    // console.log("this:", this);
     const pilot = this.elements.pilotName.value;
     const copilot = this.elements.copilotName.value;
     const fuelLevel = this.elements.fuelLevel.value;
@@ -28,21 +25,12 @@ window.addEventListener("load", function () {
   //  ..............................
   //  FETCH & DISPLAY PLANETARY JSON
   //  ..............................
-    // let listedPlanets;
-    // const listedPlanetsResponse = myFetch();
-
-  // listedPlanetsResponse // returns promise that returns planets json response data
-    myFetch()
+    myFetch() // returns promise that returns planets json response data
     .then((result) => {
 
-      // listedPlanets = result;
-
       const planetDestination = pickPlanet(result); // selects random planet
-
       // console.log("planetDestination:", planetDestination);
 
-      // displays planetDestination
-      addDestinationInfo(document, ...planetDestination);
-      // addDestinationInfo(document, planetDestination.name, planetDestination.diameter, planetDestination.star, planetDestination.distance, planetDestination.moons, planetDestination.image);
+      addDestinationInfo(document, ...planetDestination); // displays planetDestination
     }); // try-catch? --> predicts error bridges to continue code flow
 });

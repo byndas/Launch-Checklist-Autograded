@@ -69,6 +69,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
       (validateInput(cargoMass) === "Is a Number")) {
     //  all inputs have correct types
     console.log("ALL INPUTS HAVE CORRECT TYPES");
+
     //  therefore: use template literals to update crew names to list-items
     //  document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
     //  document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
@@ -80,11 +81,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     //   document.querySelector("#fuelStatus").innerHTML = "Fuel level too low for launch";
     //   // alert("Fuel level too low for launch");
     // }
+    // else {
+      // document.querySelector("#fuelStatus").innerHTML = "Fuel level high enough for launch";
+    // }
+
     // if (cargoMass > 10000) {
     //   // missionReady = false;
     //   document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
     //   // alert("Cargo mass too heavy for launch");
     // }
+    // else {
+      // document.querySelector("#cargoStatus").innerHTML = "Cargo mass low enough for launch";
+    // }
+
     // if (missionReady) {
     //   launchStatusId.innerHTML = "Shuttle is Ready for Launch";
     //   launchStatusId.style.color = "green";
@@ -121,8 +130,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
   // adds random planet's json data to #missionTarget via html tags
   document.querySelector("#missionTarget").innerHTML =
-
-  // `<h2>MissionDestination</h2><ol><li>Name:${name}</li><li>Diameter:${diameter}</li><li>Star:${star}</li><li>DistancefromEarth:${distance}</li><li>NumberofMoons:${moons}</li></ol><img src="${imageUrl}"/>`
 
   `<h2>Mission Destination</h2>
     <ol>
