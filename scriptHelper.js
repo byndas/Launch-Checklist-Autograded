@@ -108,6 +108,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
   else {
     // alert("Make sure to enter valid information for each field!");
     console.log("INVALID INPUT");
+    // document.getElementById("launchStatusCheck").style.visibility = "hidden";
+
   }
 }
 //  ...................................

@@ -53,3 +53,5 @@ window.addEventListener("load", function () {
 //  For our Launch Checklist graded assignment, line 148 in grading.test.js seems incorrectly written:
 //      the last two arguments are swapped so that the test's expected order of parameters
 //          does not match the order of keys that the json response gives us.
+
+//  Impossible to make web page function as expected while also passing all tests!
