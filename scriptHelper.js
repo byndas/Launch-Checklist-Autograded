@@ -53,6 +53,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
   else {
     document.querySelector("#fuelStatus").innerHTML = "Fuel level high enough for launch";
   }
+
   if (cargoMass > 10000) {
     document.querySelector("#cargoStatus").innerHTML = "Cargo mass too heavy for launch";
     // alert("Cargo mass too heavy for launch");
@@ -107,35 +108,32 @@ async function myFetch() {
 }
 
 function pickPlanet(planetsJSON) {
-  console.log("planetsJSON:", planetsJSON);
+  // console.log("planetsJSON:", planetsJSON);
 
   const randomIndex = Math.floor(Math.random() * planetsJSON.length);
 
-  console.log("planetsJSON["+randomIndex+"]:", planetsJSON[randomIndex]);
+  // console.log("planetsJSON["+randomIndex+"]:", planetsJSON[randomIndex]);
 
   return planetsJSON[randomIndex];
 }
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
+function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
 
   // adds random planet's json data to #missionTarget via html tags
   document.querySelector("#missionTarget").innerHTML =
 
-  `<h2>MissionDestination</h2><ol><li>Name:${name}</li><li>Diameter:${diameter}</li><li>Star:${star}</li><li>DistancefromEarth:${distance}</li><li>NumberofMoons:${moons}</li></ol><img src="${image}"/>`
+  // `<h2>MissionDestination</h2><ol><li>Name:${name}</li><li>Diameter:${diameter}</li><li>Star:${star}</li><li>DistancefromEarth:${distance}</li><li>NumberofMoons:${moons}</li></ol><img src="${imageUrl}"/>`
 
-  // `<h2>Mission Destination</h2>
-  //   <ol>
-  //     <li>Name: ${name}</li>
-  //     <li>Diameter: ${diameter}</li>
-  //     <li>Star: ${star}</li>
-  //     <li>Distance from Earth: ${distance}</li>
-  //     <li>Number of Moons: ${moons}</li>
-  //   </ol>
-  //   <img src="${image}" />
-  // `;
-
-  // let testTarget = document.querySelector("#missionTarget").innerHTML.replace(/\s/g,'');
-  // console.log("testTarget:", testTarget); // logs expected result! test should pass!
+  `<h2>Mission Destination</h2>
+    <ol>
+      <li>Name: ${name}</li>
+      <li>Diameter: ${diameter}</li>
+      <li>Star: ${star}</li>
+      <li>Distance from Earth: ${distance}</li>
+      <li>Number of Moons: ${moons}</li>
+    </ol>
+    <img src="${imageUrl}" />
+  `;
 }
 
 //  ...................................................
