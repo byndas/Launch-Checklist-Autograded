@@ -1,12 +1,11 @@
 require("cross-fetch/polyfill");
 
 /*  TASK FLOW
-  .......................................
-  on page load: FETCH PLANETARY JSON DATA
-    select random planet object via its index number
-  ..................................................
-  on form submit: VALIDATE INPUTS
-  .............................*/
+  .......................................................
+  on page load: FETCH & DISPLAY RANDOM PLANET'S JSON DATA
+  .....................................................................
+  on form submit: VALIDATE INPUTS, CHECK FOR MISSION-READY FUEL & CARGO
+  ...................................................................*/
 
 function validateInput(testInput) {
   //  inputs must not be empty
@@ -69,9 +68,11 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
       (validateInput(cargoMass) === "Is a Number")) {
     //  all inputs have correct types
     console.log("ALL INPUTS HAVE CORRECT TYPES");
-    // launchStatusId.style.color = "red";
+    //  therefore: use template literals to update crew names to list-items
+    //  document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+    //  document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-//  update mission-ready status of fuel & cargo:
+    //  update mission-ready status of fuel & cargo:
     //    handle insufficient fuel or cargo numbers
     // if (fuelLevel < 10000) {
     //   // missionReady = false;
@@ -91,9 +92,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     //   launchStatusId.innerHTML = "Shuttle Not Ready for Launch";
     //   launchStatusId.style.color = "red";
     // }
-    //  therefore: use template literals to update crew names to list-items
-    // document.querySelector("#pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-    // document.querySelector("#copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
   }
   else {
     // alert("Make sure to enter valid information for each field!");
