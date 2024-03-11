@@ -122,7 +122,7 @@ function pickPlanet(planetsJSON) {
   // console.log("planetsJSON:", planetsJSON);
 
   const randomIndex = Math.floor(Math.random() * planetsJSON.length);
-w
+
   // console.log("planetsJSON["+randomIndex+"]:", planetsJSON[randomIndex]);
 
   return planetsJSON[randomIndex];
